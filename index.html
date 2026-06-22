@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lights the Way · writing on mental health</title>
+<meta name="description" content="Honest writing about mental health. It begins with first responders, the people who run toward what others run from, and widens to anyone learning to carry hard things." />
+
+<!-- Favicon: a small gold flame, drawn inline so there's no extra file to manage -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0908'/%3E%3Ccircle cx='16' cy='17' r='7' fill='%23d8b25e'/%3E%3Ccircle cx='16' cy='15' r='9' fill='none' stroke='%23d8b25e' stroke-opacity='0.3'/%3E%3C/svg%3E" />
+
+<!-- Fonts load from Google when you're online. Offline, you'll see a clean fallback. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --ink:      #0a0908;   /* warm near-black background        */
+    --ink-2:    #12100b;   /* lifted panel                       */
+    --bone:     #ece6d8;   /* off-white reading text             */
+    --muted:    #938977;   /* warm muted gray for quiet text     */
+    --gold:     #d8b25e;   /* the light                          */
+    --gold-hi:  #f6e8b0;   /* brightest part of the glow         */
+    --gold-lo:  #8a5e1e;   /* deep amber                         */
+    --line:     rgba(216,178,94,0.16); /* faint gold hairline    */
+    --maxw:     1080px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--bone);
+    font-family:"Inter", system-ui, sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* Warm light bleeding from the top of the page, like a glow in the dark */
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:-2;
+    background:
+      radial-gradient(1100px 620px at 50% -8%, rgba(216,178,94,0.16), transparent 60%),
+      radial-gradient(900px 700px at 88% 12%, rgba(138,94,30,0.10), transparent 65%),
+      var(--ink);
+  }
+  /* Film grain for texture */
+  body::after{
+    content:"";
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    opacity:0.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+
+  a{ color:inherit; text-decoration:none; }
+  ::selection{ background:rgba(216,178,94,0.28); color:#fff; }
+  :focus-visible{ outline:2px solid var(--gold); outline-offset:4px; border-radius:2px; }
+
+  .visually-hidden{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+
+  /* ---------- Top bar ---------- */
+  header.bar{
+    position:sticky; top:0; z-index:10;
+    backdrop-filter:blur(8px);
+    background:linear-gradient(to bottom, rgba(10,9,8,0.78), rgba(10,9,8,0));
+  }
+  .bar .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:22px; padding-bottom:22px;
+  }
+  .mark{
+    display:flex; align-items:center; gap:11px;
+    font-family:"Inter"; font-weight:400;
+    letter-spacing:0.34em; text-transform:uppercase; font-size:0.72rem;
+    color:var(--bone);
+  }
+  .mark .dot{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 10px 2px rgba(216,178,94,0.8), 0 0 22px 6px rgba(216,178,94,0.35);
+  }
+  nav.links{ display:flex; gap:30px; }
+  nav.links a{
+    font-size:0.74rem; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--muted); transition:color .25s ease;
+  }
+  nav.links a:hover{ color:var(--gold); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:58vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    padding:48px 24px 20px;
+    position:relative;
+  }
+  .eyebrow{
+    font-size:0.78rem; letter-spacing:0.34em; text-transform:uppercase;
+    color:var(--gold); opacity:0.85; margin-bottom:32px;
+  }
+  .phrase{
+    position:relative; max-width:90vw; margin:0 auto;
+    font-family:"Fraunces", Georgia, serif; font-weight:300;
+    font-size:clamp(2rem, 5.4vw, 3.5rem); line-height:1.16;
+    color:var(--bone); z-index:1;
+  }
+
+  /* the glow that sits behind the changing word */
+  .phrase .halo{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:min(82vw,580px); height:min(34vw,250px);
+    background:radial-gradient(ellipse at center, rgba(246,232,176,0.34), rgba(216,178,94,0.16) 42%, transparent 72%);
+    filter:blur(26px); z-index:-1; pointer-events:none;
+    animation:breathe 6s ease-in-out infinite;
+  }
+  @keyframes breathe{
+    0%,100%{ opacity:0.78; transform:translate(-50%,-50%) scale(1); }
+    50%    { opacity:1;    transform:translate(-50%,-50%) scale(1.06); }
+  }
+
+  .word{
+    font-weight:400; white-space:nowrap;
+    background:linear-gradient(180deg, var(--gold-hi) 8%, var(--gold) 52%, var(--gold-lo) 100%);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    text-shadow:0 0 34px rgba(216,178,94,0.25);
+    transition:opacity .5s ease, filter .5s ease;
+  }
+  .word.swap{ opacity:0; filter:blur(6px); }
+  .lede{
+    max-width:580px; margin:40px auto 0;
+    color:var(--muted); font-size:1.16rem; line-height:1.75;
+  }
+  .scrollcue{
+    margin-top:34px; font-size:0.68rem; letter-spacing:0.26em; text-transform:uppercase;
+    color:var(--muted); display:inline-flex; align-items:center; gap:10px;
+  }
+  .scrollcue::after{
+    content:""; width:1px; height:34px;
+    background:linear-gradient(var(--gold), transparent);
+    display:inline-block;
+  }
+
+  /* ---------- Section scaffolding ---------- */
+  section{ padding:54px 0; }
+  .sec-eyebrow{
+    font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:20px;
+  }
+  .sec-title{
+    font-family:"Fraunces", Georgia, serif; font-weight:400;
+    font-size:clamp(2.2rem,5vw,3.5rem); line-height:1.08; margin:0 0 22px;
+    color:var(--bone);
+  }
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .9s ease, transform .9s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---------- About ---------- */
+  .about .wrap{ max-width:760px; }
+  .about p{ font-size:1.18rem; line-height:1.8; color:var(--bone); }
+  .about p.soft{ color:var(--muted); font-size:1.02rem; }
+
+  /* ---------- Writing list ---------- */
+  .writing .wrap{ max-width:880px; }
+  .piece{
+    display:block; padding:40px 0; border-top:1px solid var(--line);
+    transition:padding-left .35s ease;
+  }
+  .piece:last-of-type{ border-bottom:1px solid var(--line); }
+  a.piece:hover{ padding-left:10px; }
+  .piece .meta{
+    display:flex; gap:18px; align-items:center;
+    font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:16px;
+  }
+  .piece .meta .tag{ color:var(--gold); }
+  .piece h3{
+    font-family:"Fraunces", Georgia, serif; font-weight:400;
+    font-size:clamp(1.7rem,3.4vw,2.5rem); line-height:1.12; margin:0 0 14px;
+    color:var(--bone); transition:color .3s ease;
+  }
+  a.piece:hover h3{ color:var(--gold); }
+  .piece p{ color:var(--muted); margin:0 0 18px; max-width:60ch; }
+  .piece .more{
+    font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold);
+  }
+  .piece .more .arr{ transition:margin-left .3s ease; display:inline-block; }
+  a.piece:hover .more .arr{ margin-left:8px; }
+  .piece.soon{ opacity:0.6; }
+  .piece.soon .meta .tag{ color:var(--muted); }
+
+  /* ---------- PorchLight ---------- */
+  .porch{ text-align:center; }
+  .porch .wrap{ max-width:640px; }
+  .lantern{
+    width:14px; height:14px; border-radius:50%; margin:0 auto 28px;
+    background:var(--gold);
+    box-shadow:0 0 16px 4px rgba(216,178,94,0.7), 0 0 40px 14px rgba(216,178,94,0.28);
+  }
+  .porch p{ color:var(--muted); font-size:1.1rem; line-height:1.8; margin:0 auto 34px; max-width:52ch; }
+  .btn{
+    display:inline-block; padding:15px 30px;
+    border:1px solid var(--gold); color:var(--gold);
+    font-size:0.74rem; letter-spacing:0.2em; text-transform:uppercase;
+    transition:background .3s ease, color .3s ease, box-shadow .3s ease;
+  }
+  .btn:hover{
+    background:var(--gold); color:var(--ink);
+    box-shadow:0 0 30px rgba(216,178,94,0.4);
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:54px 0;
+    text-align:center;
+  }
+  footer .mark{ justify-content:center; margin-bottom:22px; }
+  footer .fnav{ display:flex; gap:26px; justify-content:center; flex-wrap:wrap; margin-bottom:24px; }
+  footer .fnav a{
+    font-size:0.74rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted);
+    transition:color .25s ease;
+  }
+  footer .fnav a:hover{ color:var(--gold); }
+  footer small{ color:var(--muted); font-size:0.78rem; letter-spacing:0.04em; }
+
+  @media (max-width:640px){
+    nav.links{ display:none; }
+    section{ padding:40px 0; }
+    .hero{ min-height:50vh; padding:28px 20px 16px; }
+    .lede{ font-size:0.98rem; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .halo{ animation:none; }
+    .word{ transition:opacity .25s ease; }
+    .word.swap{ filter:none; transform:none; }
+    .reveal{ transition:none; opacity:1; transform:none; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- One clean heading for screen readers; the animated version below is decorative -->
+  <h1 class="visually-hidden">Lights the Way, writing on mental health for first responders and beyond</h1>
+
+  <header class="bar">
+    <div class="wrap">
+      <a class="mark" href="/" aria-label="Lights the Way home">
+        <span class="dot" aria-hidden="true"></span>
+        Lights the Way
+      </a>
+      <nav class="links" aria-label="Primary">
+        <a href="#writing">Writing</a>
+        <a href="about.html">About</a>
+        <a href="#connect">Connect</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" aria-hidden="true">
+    <p class="eyebrow">Mental health, in plain light</p>
+    <p class="phrase">
+      <span class="halo" aria-hidden="true"></span>
+      <span class="word" id="word">Love</span> lights the way.
+    </p>
+    <p class="lede">
+      Essays on resilience, recovery, and the weight we carry,
+      and how, slowly, we learn to set it down.
+    </p>
+    <span class="scrollcue">Read on</span>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section class="about" id="about">
+    <div class="wrap reveal">
+      <p class="sec-eyebrow">What this is</p>
+      <p>
+        I write about mental health, the quiet, ongoing work of staying whole while
+        carrying hard things. Some of it grows out of the world I work in as a first
+        responder, but this isn't a site about the badge. It's about the person underneath
+        it, and the practice we all share: noticing what we carry, and learning, slowly,
+        to set some of it down.
+      </p>
+      <p class="soft">
+        These are my own thoughts and essays, written to be honest, unhurried, and easy
+        to sit with. No clinical distance, no easy answers. Just a clear place to think
+        about the things most of us feel and rarely say out loud. New writing arrives often.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== WRITING ===================== -->
+  <section class="writing" id="writing">
+    <div class="wrap">
+      <p class="sec-eyebrow reveal">Writing</p>
+      <h2 class="sec-title reveal">Recent thoughts</h2>
+
+      <a class="piece reveal" href="articles/holding-space.html">
+        <div class="meta"><span class="tag">Reflections</span><span>9 min read</span></div>
+        <h3>Holding Space</h3>
+        <p>
+          The environment we create for truth matters more than the questions we ask. On what it
+          really means to hold space for another person, and why it is the work, not an accessory to it.
+        </p>
+        <span class="more">Read the essay <span class="arr">&rarr;</span></span>
+      </a>
+
+      <a class="piece reveal" href="articles/still-showing-up.html">
+        <div class="meta"><span class="tag">For Clinicians</span><span>8 min read</span></div>
+        <h3>Still Showing Up</h3>
+        <p>
+          What clinicians should understand about firefighters: the culture they carry into the room,
+          why they enter therapy later than they should, and what earns their trust.
+        </p>
+        <span class="more">Read the essay <span class="arr">&rarr;</span></span>
+      </a>
+
+      <div class="piece soon reveal">
+        <div class="meta"><span class="tag">Coming soon</span><span>In progress</span></div>
+        <h3>The Weight I Carry</h3>
+        <p>
+          A personal reckoning with what this work leaves behind, and the slow practice of learning to
+          set some of it down.
+        </p>
+        <span class="more">Soon</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PORCHLIGHT ===================== -->
+  <section class="porch" id="porchlight">
+    <div class="wrap reveal">
+      <div class="lantern" aria-hidden="true"></div>
+      <p class="sec-eyebrow">PorchLight</p>
+      <h2 class="sec-title">A light left on, so you can find your way home.</h2>
+      <p>
+        PorchLight is the heart of this work. A place built for the people who spend their
+        lives showing up for others, and who deserve somewhere to be met when it's their turn.
+      </p>
+      <a class="btn" href="https://porchlightai.com" target="_blank" rel="noopener">Learn about PorchLight</a>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="connect">
+    <div class="wrap">
+      <div class="mark"><span class="dot" aria-hidden="true"></span> Lights the Way</div>
+      <nav class="fnav" aria-label="Footer">
+        <a href="https://www.linkedin.com/in/brianmfrench/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#writing">Writing</a>
+        <a href="#porchlight">PorchLight</a>
+      </nav>
+      <small>&copy; 2026 Lights the Way · LightTheWay.org</small>
+    </div>
+  </footer>
+
+<script>
+  /* ====== The cycling word ======
+     Edit this list to change what "lights the way."
+     Keep them short; one or two words reads best. */
+  const WORDS = [
+    "Love", "Grounding", "Mindfulness", "Positivity", "High Frequency",
+    "Resilience", "Stillness", "Breath", "Courage", "Presence",
+    "Compassion", "Honesty", "Connection", "Healing", "Gratitude",
+    "Hope", "Rest", "Patience", "Clarity", "Purpose"
+  ];
+
+  const el = document.getElementById("word");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let i = 0;
+
+  setInterval(() => {
+    el.classList.add("swap");          // fade + blur out
+    const next = WORDS[(i + 1) % WORDS.length];
+    setTimeout(() => {
+      el.textContent = next;           // swap while invisible
+      el.classList.remove("swap");     // fade back in
+      i = (i + 1) % WORDS.length;
+    }, reduce ? 250 : 560);
+  }, 3200);
+
+  /* ====== Gentle reveal on scroll ====== */
+  if (!reduce && "IntersectionObserver" in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll(".reveal").forEach(n => io.observe(n));
+  } else {
+    document.querySelectorAll(".reveal").forEach(n => n.classList.add("in"));
+  }
+</script>
+</body>
+</html>
