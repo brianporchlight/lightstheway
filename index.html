@@ -250,7 +250,11 @@
   footer small{ color:var(--muted); font-size:0.78rem; letter-spacing:0.04em; }
 
   @media (max-width:640px){
-    nav.links{ display:none; }
+    /* Stack the wordmark over the nav links so the top buttons stay visible on phones */
+    .bar .wrap{ flex-wrap:wrap; justify-content:center; gap:13px 0; padding-top:18px; padding-bottom:14px; }
+    .mark{ width:100%; justify-content:center; }
+    nav.links{ display:flex; gap:24px; justify-content:center; }
+    nav.links a{ font-size:0.72rem; letter-spacing:0.14em; }
     section{ padding:40px 0; }
     .hero{ min-height:50vh; padding:28px 20px 16px; }
     .lede{ font-size:0.98rem; }
