@@ -81,12 +81,15 @@
   @media (max-width:640px){ .farewell{ height:200px; } }
 
   .portrait{
-    width:176px; height:176px; border-radius:50%; margin:0 auto 30px;
+    width:220px; height:220px; border-radius:50%; margin:0 auto 34px;
     background-image:url("images/brian-portrait.png");
-    background-size:112%; background-position:50% 22%; background-repeat:no-repeat;
+    background-size:cover; background-position:50% 28%; background-repeat:no-repeat;
     border:1px solid var(--line);
-    box-shadow:0 0 30px rgba(216,178,94,0.18);
+    box-shadow:0 24px 52px rgba(0,0,0,0.55), 0 0 46px rgba(216,178,94,0.14);
+    transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease;
+    transform-style:preserve-3d; will-change:transform;
   }
+  @media (max-width:640px){ .portrait{ width:188px; height:188px; } }
 
   h1.title{
     font-family:"Fraunces", Georgia, serif; font-weight:400;
@@ -241,6 +244,25 @@
     <a href="index.html">&larr; Back to Lights the Way</a>
     <small>&copy; 2026 Lights the Way · lightstheway.org</small>
   </div>
+
+<script>
+  (function(){
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !window.matchMedia("(hover: hover)").matches) return;
+    var p = document.querySelector(".portrait");
+    if (!p) return;
+    p.addEventListener("mousemove", function(e){
+      var r = p.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width - 0.5;
+      var py = (e.clientY - r.top) / r.height - 0.5;
+      p.style.transform =
+        "perspective(900px) rotateY(" + (px * 10).toFixed(2) + "deg) rotateX(" +
+        (-py * 10).toFixed(2) + "deg) translateZ(16px)";
+    });
+    p.addEventListener("mouseleave", function(){ p.style.transform = ""; });
+  })();
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 
 </body>
 </html>
