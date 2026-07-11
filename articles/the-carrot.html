@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Carrot · Lights the Way</title>
+<meta name="description" content="Nineteen years in the fire service. An honest reckoning with the grind, the pension, and the person the job quietly makes of you." />
+
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lightstheway.org/articles/the-carrot.html" />
+<meta property="og:title" content="The Carrot · Lights the Way" />
+<meta property="og:description" content="Nineteen years in the fire service. An honest reckoning with the grind, the pension, and the person the job quietly makes of you." />
+<meta property="og:image" content="https://lightstheway.org/images/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://lightstheway.org/images/og-image.jpg" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0908'/%3E%3Ccircle cx='16' cy='17' r='7' fill='%23d8b25e'/%3E%3Ccircle cx='16' cy='15' r='9' fill='none' stroke='%23d8b25e' stroke-opacity='0.3'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --ink:#0a0908; --bone:#ece6d8; --muted:#938977;
+    --gold:#d8b25e; --gold-hi:#f6e8b0; --gold-lo:#8a5e1e;
+    --line:rgba(216,178,94,0.16);
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--ink); color:var(--bone);
+    font-family:"Inter", system-ui, sans-serif; font-weight:300; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-2;
+    background:
+      radial-gradient(1000px 560px at 50% -10%, rgba(216,178,94,0.12), transparent 60%),
+      var(--ink);
+  }
+  body::after{
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    opacity:0.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  a{ color:inherit; }
+  ::selection{ background:rgba(216,178,94,0.28); color:#fff; }
+  :focus-visible{ outline:2px solid var(--gold); outline-offset:4px; }
+
+  .wrap{ max-width:720px; margin:0 auto; padding:0 28px; }
+
+  .topbar{ padding:26px 0; border-bottom:1px solid var(--line); }
+  .topbar .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .back{
+    font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted);
+    transition:color .25s ease; text-decoration:none;
+  }
+  .back:hover{ color:var(--gold); }
+  .mark{
+    display:flex; align-items:center; gap:10px; text-decoration:none;
+    font-size:0.7rem; letter-spacing:0.32em; text-transform:uppercase; color:var(--bone);
+  }
+  .mark .dot{
+    width:8px; height:8px; border-radius:50%; background:var(--gold);
+    box-shadow:0 0 10px 2px rgba(216,178,94,0.75);
+  }
+
+  article{ padding:64px 0 40px; }
+  .meta{
+    display:flex; gap:18px; align-items:center; justify-content:center;
+    font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:24px;
+  }
+  .meta .tag{ color:var(--gold); }
+  h1.title{
+    font-family:"Fraunces", Georgia, serif; font-weight:400;
+    font-size:clamp(2.4rem,6vw,3.8rem); line-height:1.06; text-align:center;
+    margin:0 0 22px; color:var(--bone);
+  }
+  .standfirst{
+    text-align:center; color:var(--muted); font-size:1.18rem; line-height:1.7;
+    max-width:34ch; margin:0 auto 12px;
+    font-family:"Fraunces", Georgia, serif; font-weight:300; font-style:italic;
+  }
+  .rule{ width:46px; height:1px; background:var(--gold); margin:42px auto; opacity:0.6; }
+
+  .body{ font-size:1.14rem; line-height:1.85; }
+  .body p{ margin:0 0 1.4em; }
+  .body p.lead:first-of-type::first-letter{
+    font-family:"Fraunces", Georgia, serif; font-weight:500;
+    float:left; font-size:3.6rem; line-height:0.78; padding:6px 12px 0 0; color:var(--gold);
+  }
+
+  .eyebrow{
+    font-size:0.72rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold);
+    margin:2.6em 0 1em; text-align:center;
+  }
+
+  .body .pull{
+    font-family:"Fraunces", Georgia, serif; font-weight:300; font-style:italic;
+    font-size:1.6rem; line-height:1.45; color:var(--gold-hi); text-align:center;
+    margin-left:auto; margin-right:auto; margin-top:1.8em; margin-bottom:1.8em;
+    max-width:26ch;
+  }
+
+  .callout{
+    margin:2em 0; padding:26px 30px; border:1px solid var(--line); border-radius:12px;
+    background:rgba(216,178,94,0.05);
+  }
+  .callout .lbl{
+    font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    margin:0 0 12px;
+  }
+  .callout p{ margin:0; font-size:1.06rem; line-height:1.8; color:var(--bone); }
+  .callout p.q{
+    font-family:"Fraunces", Georgia, serif; font-style:italic; font-size:1.2rem; color:var(--gold-hi);
+  }
+
+  .aside{
+    margin:2.2em 0; padding:24px 28px; border:1px solid var(--line);
+    border-left:3px solid var(--gold); border-radius:12px;
+    background:rgba(216,178,94,0.05);
+  }
+  .aside .lbl{
+    font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    margin:0 0 10px;
+  }
+  .aside p{ margin:0 0 0.8em; font-size:1.04rem; line-height:1.8; color:var(--bone); }
+  .aside p:last-child{ margin-bottom:0; }
+
+  .grid{ display:grid; gap:16px; margin:2em 0; }
+  .grid.trio{ grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); }
+  .card{
+    padding:24px 26px; border:1px solid var(--line); border-radius:12px;
+    background:linear-gradient(180deg, rgba(216,178,94,0.06), rgba(216,178,94,0.02));
+    transition:border-color .3s ease, transform .3s ease;
+  }
+  .card:hover{ border-color:rgba(216,178,94,0.42); transform:translateY(-3px); }
+  .card .ic{ display:block; width:30px; height:30px; color:var(--gold); margin-bottom:14px; }
+  .card h4{
+    font-family:"Fraunces", Georgia, serif; font-weight:400; font-size:1.24rem;
+    color:var(--gold-hi); margin:0 0 10px;
+  }
+  .card p{ margin:0; font-size:1rem; line-height:1.72; color:var(--muted); }
+
+  .sig{
+    margin-top:46px; padding:22px 28px; border:1px solid var(--line); border-radius:12px;
+    background:rgba(216,178,94,0.04); text-align:center;
+  }
+  .sig .nm{ font-family:"Fraunces", Georgia, serif; color:var(--bone); font-size:1.15rem; }
+  .sig .rl{ color:var(--muted); font-size:0.82rem; letter-spacing:0.04em; margin-top:5px; }
+
+  .endnote{
+    margin-top:48px; padding:26px 30px; border:1px solid var(--line); border-radius:12px;
+    background:rgba(216,178,94,0.04);
+    font-size:0.98rem; line-height:1.75; color:var(--muted);
+  }
+  .endnote strong{ color:var(--bone); font-weight:500; }
+
+  .foot{ border-top:1px solid var(--line); padding:46px 0; text-align:center; margin-top:60px; }
+  .foot a{
+    font-size:0.74rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold);
+    text-decoration:none;
+  }
+  .foot small{ display:block; margin-top:18px; color:var(--muted); font-size:0.76rem; }
+
+  @media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap">
+      <a class="mark" href="../index.html"><span class="dot" aria-hidden="true"></span> Lights the Way</a>
+      <a class="back" href="../index.html">&larr; All writing</a>
+    </div>
+  </header>
+
+  <article>
+    <div class="wrap">
+      <div class="meta"><span class="tag">Reflections</span><span>9 min read</span></div>
+      <h1 class="title">The Carrot</h1>
+      <p class="standfirst">Nineteen years in. The grind, the pension, and the person the job quietly makes of you.</p>
+      <div class="rule" aria-hidden="true"></div>
+
+      <div class="body">
+        <p class="lead">
+          I don't regret becoming a firefighter. Not for a second. This job shaped me in ways I never could
+          have imagined. It taught me how to solve problems when there weren't any good options, how to stay
+          calm when other people couldn't, and how to trust the people beside me when things got hard. It
+          taught me about sacrifice, teamwork, human nature, and what people are capable of on both the best
+          and worst days of their lives. I would do it all again. But after doing this work long enough, you
+          eventually start asking different questions than you did when you first walked through the doors.
+        </p>
+
+        <p class="eyebrow">Where it began</p>
+
+        <p>
+          I grew up in what I would call a quiet, supportive family. We weren't the loud family, and we never
+          drew much attention to ourselves. My parents leaned more toward the hippie side, but they also came
+          from a generation where kids were supposed to be seen and not heard, and some of that carried into
+          how we were raised. I was also lucky enough to grow up in the last stretch of an analog world, where
+          you could disappear into the neighborhood with your friends, ride bikes all day, and come home when
+          the streetlights came on. I had my own challenges growing up and trying to figure out who I was, but
+          somehow I found my way through school and eventually earned a master's degree in counseling
+          psychology.
+        </p>
+        <p>
+          For a while, I thought counseling was going to be my path. At some point, though, it didn't feel
+          like the right fit for me anymore. I wanted something different. I liked being part of a team. I had
+          always enjoyed sports and the feeling of working together toward something that mattered. I wanted a
+          career that felt active, meaningful, and connected to other people. That led me to the Phoenix Fire
+          Department.
+        </p>
+        <p>
+          Getting hired wasn't easy. At the time, thousands of people were applying and testing for a limited
+          number of positions. I remember the excitement and gratitude I felt when I was offered a spot in the
+          academy. I was thirty one years old, physically fit, and ready for the demands of the job. Because
+          of my counseling background, I also believed I had at least some understanding of the mental and
+          emotional side of what I might see. I knew there would be trauma. I knew there would be death,
+          suffering, chaos, and people in crisis. I thought that awareness might prepare me.
+        </p>
+
+        <p class="pull">What I wasn't prepared for was the grind.</p>
+
+        <p class="eyebrow">The tour</p>
+
+        <p>
+          Some departments call a shift a tour, and I do think this work means something bigger than a single
+          twenty four hours. A tour is the long stretch of living inside this job, going out shift after
+          shift, battling the world and trying to solve whatever problems are waiting on the other side of the
+          tones. You come home between shifts, but that doesn't always mean the tour is over. You sleep,
+          recover enough to function, take care of what you can, and then start preparing to go back. Without
+          an extended period of time away, you never fully step outside of that life long enough for your body
+          and mind to reset. The tour just keeps going.
+        </p>
+        <p>
+          In the fire service, every department seems to have its own version of a schedule designed to soften
+          the impact of being there for at least twenty four hours at a time. Some work forty eight hours on
+          and ninety six off. Some work two days on and four days off. In my department, we work twenty four
+          hours on and forty eight hours off. No matter how it is arranged, nobody has completely figured out
+          how to remove the toll.
+        </p>
+
+        <div class="aside">
+          <p class="lbl">The recovery day that isn't</p>
+          <p>
+            When I was younger, forty eight hours off felt pretty good. I could come home, sleep, work out,
+            see friends, take care of life, and get ready to go back. It didn't feel like a normal weekend,
+            but it felt manageable. As I've gotten older, that first day off has become less of a day off and
+            more of a recovery day. You come home from a busy firehouse and your body is trying to catch up on
+            everything it missed. The next day, you start preparing to go back. Over time, it can feel less
+            like separate shifts and more like one long tour that never ends.
+          </p>
+        </div>
+
+        <p>
+          I'm writing this in the middle of a Phoenix summer, when the temperatures are above 110 degrees and
+          the heat adds another layer to everything. I haven't had much time away from the firehouse lately,
+          and I can feel my body wanting the tour to end for a little while. I catch myself imagining what it
+          would feel like to sleep through the night for seven days straight, maybe even fourteen. Not because
+          I want to disappear from the job, but because I want enough time to recalibrate, let my nervous
+          system settle, and come back feeling like myself again.
+        </p>
+
+        <p class="eyebrow">The calls</p>
+
+        <p>
+          The tones don't care how tired you are. They go off when they go off. You get up, put your boots on,
+          get on the truck, and go help whoever called. Sometimes it is a true emergency. Sometimes someone is
+          having a heart attack and we get to use every skill we've been trained to use. Sometimes there is a
+          fire and the job becomes exactly what we imagined it would be when we first applied. Those calls
+          still matter. They remind you why the work is important.
+        </p>
+        <p>
+          Other times, we are responding to people who are simply in a difficult place in their lives and
+          don't know where else to turn. They may be dealing with pain, stress, housing problems, loneliness,
+          or a situation they no longer know how to manage. Sometimes they believe the hospital is the only
+          place that can help, and what they are really asking for is a ride out of the place they are in,
+          even if only for a little while. The fire service has slowly become the place we send the problems
+          the rest of the system doesn't know how to solve. Sometimes we are equipped to help. Sometimes we
+          aren't. Sometimes all we can do is get someone to the next place and hope the next part of the
+          system catches them.
+        </p>
+        <p>
+          That can be frustrating, but I also understand it differently now than I did when I was younger. A
+          lot of those people are asking for the same thing many firefighters quietly want. They need a break.
+          They want someone to help them get out of the place they're in, even if only for a little while.
+          They may not have the words, resources, or support to make that happen, so they call 911. We arrive
+          because that is what we do.
+        </p>
+
+        <p class="pull">The calls are not always what wear you down. It is the repetition.</p>
+
+        <p>
+          It is getting up over and over again. It is the interrupted sleep, the constant alertness, the
+          summer heat, the physical strain, the lifting, the exposures, and the inability to fully shut off.
+          It is witnessing another person's worst day and then returning to the station, finishing a report,
+          climbing back into bed, and waiting for the tones to go off again. That is the grind. It rarely
+          breaks you all at once. It quietly accumulates, one shift at a time, until one day you realize your
+          recovery day has become your preparation day.
+        </p>
+
+        <p class="eyebrow">Nineteen years</p>
+
+        <p>
+          Nineteen years later, I'm looking forward to the next chapter of my life. I chose not to promote,
+          and I chose not to become a paramedic. I truly enjoyed the job I originally applied for. I liked
+          riding in the back, being part of the crew, working hard, and doing what the job required. I never
+          needed a different title to make the work meaningful to me. I liked being part of the team.
+        </p>
+
+        <div class="callout">
+          <p class="q">
+            There is a saying you hear from retirees. They don't miss the circus. They miss the clowns.
+          </p>
+        </div>
+
+        <p>
+          What they mean is they don't miss the policies, politics, paperwork, procedures, or constant chaos.
+          They miss the people. They miss the crew. They miss sitting around the table, laughing at things
+          nobody outside the firehouse would understand, and knowing the people beside them would show up when
+          it mattered. That is what keeps many of us coming back. We show up for each other.
+        </p>
+        <p>
+          But if we are being honest, there is another thing that quietly keeps many of us there.
+        </p>
+
+        <p class="pull">The carrot.</p>
+
+        <p>
+          When you first get hired, it looks like a pension. It looks like security. It looks like the promise
+          that if you just keep going, everything will work out. Twenty years feels impossibly far away, so
+          you put your head down and go to work. Then ten years pass. Then fifteen. Then suddenly you're close
+          enough that walking away no longer makes sense.
+        </p>
+        <p>
+          Somewhere along the way, the pension stops being something you think about once in a while and
+          quietly becomes the finish line you've been running toward. Not because the money is the point, but
+          because you've invested so much of yourself into this career that you want to see it through. The
+          carrot isn't really the paycheck waiting at the end. It's the belief that if you can just make it a
+          little farther, you've earned the chance to finally rest.
+        </p>
+
+        <p class="eyebrow">What it took to get there</p>
+
+        <p>
+          Looking back, I don't think about the pension nearly as much as I think about what it took to get
+          there. I think about the birthdays, the holidays, the interrupted nights, the summers, the
+          friendships, the calls I'll never forget, and the years that somehow passed faster than I imagined.
+          I think about friends who retired, friends who developed cancer, and friends who never got the
+          chance to enjoy the next chapter they had worked so hard to reach.
+        </p>
+        <p>
+          Do I feel cheated? No. You don't know what you don't know when you're young. Like most firefighters,
+          I trusted the people who came before me. I listened when they told me to invest in my retirement,
+          and I wish I had understood even earlier the importance of building a life outside the firehouse
+          too. Not because the fire service isn't worth it, but because no career, no matter how meaningful,
+          should become your entire identity.
+        </p>
+        <p>
+          I don't write this with bitterness. I write it with gratitude and clarity. This job gave me far more
+          than a pension ever could. It taught me how to lead, how to solve problems under pressure, how to
+          trust other people, and how to keep moving when life became difficult. Those lessons followed me
+          outside the firehouse. They helped me build businesses, strengthen relationships, and prepare for
+          whatever comes next.
+        </p>
+
+        <p class="eyebrow">The real carrot</p>
+
+        <div class="grid trio">
+          <div class="card">
+            <h4>Not retirement</h4>
+            <p>
+              Maybe that's the real carrot. Not the date circled on a calendar somewhere out ahead of you.
+            </p>
+          </div>
+          <div class="card">
+            <h4>Not the pension</h4>
+            <p>
+              Not the plaque they hand you on your last day before someone else climbs into your seat.
+            </p>
+          </div>
+          <div class="card">
+            <h4>The person</h4>
+            <p>
+              Maybe the real reward is the person this career quietly shapes you into along the way.
+            </p>
+          </div>
+        </div>
+
+        <p class="eyebrow">What I'd tell my younger self</p>
+
+        <div class="grid trio">
+          <div class="card">
+            <h4>Take recovery as seriously as the work</h4>
+            <p>
+              The hardest part of this career isn't one terrible call. It's the grind. One shift at a time,
+              one interrupted night at a time, one Phoenix summer at a time. If you're not careful, you become
+              so good at carrying everyone else's weight that you stop noticing the weight you're carrying
+              yourself.
+            </p>
+          </div>
+          <div class="card">
+            <h4>Build a life outside the firehouse, early</h4>
+            <p>
+              No career, no matter how meaningful, should become your entire identity. Invest in
+              relationships, in health, in who you are when you take the gear off. Not because the fire
+              service isn't worth it, because it absolutely is, but because you will need that other version
+              of yourself eventually.
+            </p>
+          </div>
+          <div class="card">
+            <h4>Trust what the job is teaching you</h4>
+            <p>
+              This job gives you far more than a pension ever could. How to lead. How to solve problems under
+              pressure. How to trust other people. How to keep moving when life becomes difficult. Those
+              lessons follow you out the door. Maybe that's the real carrot.
+            </p>
+          </div>
+        </div>
+
+        <p>
+          I'd still do it again. I would just remind the younger version of myself to take recovery as
+          seriously as the work itself, because the hardest part of this career isn't one terrible call. It's
+          the grind. It happens one shift at a time, one interrupted night at a time, one Phoenix summer at a
+          time. If you're not careful, you become so good at carrying everyone else's weight that you stop
+          noticing the weight you're carrying yourself.
+        </p>
+
+        <p class="pull">That part deserves just as much attention as the job.</p>
+
+        <div class="sig">
+          <div class="nm">Brian French</div>
+          <div class="rl">Licensed Professional Counselor &middot; Phoenix Firefighter</div>
+        </div>
+      </div>
+
+      <div class="endnote">
+        <strong>If you are somewhere in the middle of your own tour.</strong> The grind is not a character
+        flaw and it is not weakness. It is what the work does to a body and a mind over time. Take the
+        recovery as seriously as you take the job, and build the life waiting on the other side of it while
+        you still have the years to enjoy it.
+      </div>
+    </div>
+  </article>
+
+  <div class="foot">
+    <a href="../index.html">&larr; Back to Lights the Way</a>
+    <small>&copy; 2026 Lights the Way · lightstheway.org</small>
+  </div>
+
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
