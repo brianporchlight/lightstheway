@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Lights the Way</title>
+  <subtitle>Honest writing about mental health, beginning with first responders and widening to anyone learning to carry hard things.</subtitle>
+  <link href="https://lightstheway.org/feed.xml" rel="self" />
+  <link href="https://lightstheway.org/" />
+  <id>https://lightstheway.org/</id>
+  <updated>2026-07-19T12:00:00-07:00</updated>
+  <author>
+    <name>Brian French</name>
+    <uri>https://lightstheway.org/about.html</uri>
+  </author>
+
+  <entry>
+    <title>The Carrot</title>
+    <link href="https://lightstheway.org/articles/the-carrot.html" />
+    <id>https://lightstheway.org/articles/the-carrot.html</id>
+    <published>2026-07-11T12:00:00-07:00</published>
+    <updated>2026-07-19T12:00:00-07:00</updated>
+    <summary>Nineteen years in the fire service: an honest look at firefighter retirement, the pension we chase, career burnout, and who the job shapes us into along the way. A firefighter reflects on the pension as the carrot at the end of a fire service career, what the grind costs, how the job shapes identity, and how to stay a whole person while running toward retirement.</summary>
+  </entry>
+
+  <entry>
+    <title>Why We Don't Reach Out Sooner</title>
+    <link href="https://lightstheway.org/articles/why-we-dont-reach-out-sooner.html" />
+    <id>https://lightstheway.org/articles/why-we-dont-reach-out-sooner.html</id>
+    <published>2026-06-24T12:00:00-07:00</published>
+    <updated>2026-07-19T12:00:00-07:00</updated>
+    <summary>Why firefighters and first responders wait to ask for mental health help: the culture of pushing through, how carried weight starts to feel normal, how spouses, kids, and crews notice the change first, and what real, safe help needs to feel like.</summary>
+  </entry>
+
+  <entry>
+    <title>Holding Space</title>
+    <link href="https://lightstheway.org/articles/holding-space.html" />
+    <id>https://lightstheway.org/articles/holding-space.html</id>
+    <published>2026-06-22T12:00:00-07:00</published>
+    <updated>2026-07-19T12:00:00-07:00</updated>
+    <summary>What it really means to hold space for another person: creating the conditions where someone can tell the truth. Why presence matters more than technique, what it looks like in peer support and everyday relationships, and why holding space is the work itself.</summary>
+  </entry>
+
+  <entry>
+    <title>Still Showing Up</title>
+    <link href="https://lightstheway.org/articles/still-showing-up.html" />
+    <id>https://lightstheway.org/articles/still-showing-up.html</id>
+    <published>2026-06-22T12:00:00-07:00</published>
+    <updated>2026-07-19T12:00:00-07:00</updated>
+    <summary>What therapists and clinicians should understand about firefighters: the culture a firefighter carries into the therapy room, why they usually arrive later than they should, and the specific things that earn or lose their trust.</summary>
+  </entry>
+</feed>
